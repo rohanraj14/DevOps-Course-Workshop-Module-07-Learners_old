@@ -16,11 +16,9 @@ jobs:
     # - uses: /rohanraj14/DevOps-Course-Workshop-Module-07-Learners@main
     
     - run: dotnet build 
-    - name: Run in Web directory
+    - name: Run in Web directory - run App
       run: |
         npm install
         npm run build
+        dotnet run
       working-directory: ./DotnetTemplate.Web
-    - name: Dotnet Run App
-      run: dotnet run
-      working-directory: ./
