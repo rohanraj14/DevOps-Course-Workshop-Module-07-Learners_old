@@ -24,11 +24,6 @@ jobs:
       working-directory: ./DotnetTemplate.Web
     - name: Test TS 
       run: |
-        npm t
-        npm run lint
-      working-directory: ./DotnetTemplate.Web
-    - name: Test TS 
-      run: |
         npm run lint
         npm t
       working-directory: ./DotnetTemplate.Web
