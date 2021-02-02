@@ -14,8 +14,11 @@ jobs:
     #     who-to-greet: 'Mona the Octocat'
      
     # - uses: /rohanraj14/DevOps-Course-Workshop-Module-07-Learners@main
+    
     - run: dotnet build 
-    - run: cd  DotnetTemplate.Web
-    - run: npm install
-    - run: npm run build
+    - run: |
+        npm install
+        npm run build
+    working-directory: DotnetTemplate.Web
+    
     - run: dotnet run
