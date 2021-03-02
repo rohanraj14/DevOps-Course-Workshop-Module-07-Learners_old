@@ -27,6 +27,26 @@ jobs:
         npm run lint
         npm t
       working-directory: ./DotnetTemplate.Web
-    # - name: Run App 
-    #   run: dotnet run
-    #   working-directory: ./DotnetTemplate.Web
+    - name: Run App 
+      run: dotnet run
+      working-directory: ./DotnetTemplate.Web
+ publish:
+    name: Publish to Dockerhub
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets_dockerhub.DOCKERHUB_USERNAME }}
+          password: ${{ secrets_dockerhub.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: rohanraj14/dotnet-app:latest
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
