@@ -12,4 +12,4 @@ RUN apt-get update -yq \
         nodejs
 WORKDIR /opt/dotnetapp07/DotnetTemplate.Web 
 RUN npm install
-ENTRYPOINT ["dotnet", "run", "npm", "run"]
+ENTRYPOINT ["npm", "run","dotnet", "run"]
