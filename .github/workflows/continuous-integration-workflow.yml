@@ -30,7 +30,8 @@ jobs:
     - name: Run App 
       run: dotnet run
       working-directory: ./DotnetTemplate.Web
- publish:
+
+  publish:
     name: Publish to Dockerhub
     steps:
       - name: Set up QEMU
