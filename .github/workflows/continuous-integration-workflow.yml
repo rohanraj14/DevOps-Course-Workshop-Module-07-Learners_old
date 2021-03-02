@@ -19,9 +19,6 @@ jobs:
         npm run lint
         npm t
       working-directory: ./DotnetTemplate.Web
-    - name: Run App 
-      run: dotnet run
-      working-directory: ./DotnetTemplate.Web
 
   publish:
     name: Publish to Dockerhub
