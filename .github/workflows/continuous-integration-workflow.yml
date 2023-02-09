@@ -9,7 +9,15 @@ jobs:
     - uses: actions/checkout@v2
     - run: dotnet build 
     - run: dotnet test
-    - name: Hello world
-      uses: actions/hello-world-javascript-action@v1.1 # Name of the action. This uses https://github.com/actions/hello-world-javascript-action
-      with:                                            # This section is needed if you need to pass arguments to the action
-        who-to-greet: 'Mona the Octocat'
+    - name: Builds the typescript code
+      run: |
+        npm install
+        npm run build
+      working-directory: ./DotnetTemplate.Web
+    - name: Runs the linter on the TypeScript code.
+      run : npm run lint
+      working-directory: ./DotnetTemplate.Web
+    - name: Test TS 
+      run: npm t
+      working-directory: ./DotnetTemplate.Web
+  
